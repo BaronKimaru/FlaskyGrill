@@ -54,3 +54,11 @@
 10. API Manipulation
     - route for GET, POST & DELETE requests. restaurant = Restaurant.query.filter(id=id)
     - NOT DONE
+
+## git remove committed files
+If you want to remove the file from the remote repo, first remove it from your project with --cache option and then push it:
+
+git rm --cache /path/to/file
+git commit -am "Remove file"
+git push
+(This works even if the file was added to the remote repo some commits ago) Remember to add to .gitignore the file extensions that you don't want to push.
