@@ -41,11 +41,15 @@
             "restaurants_pkey" PRIMARY KEY, btree (id)
      ```
      
-      ### Image for markdown:  
+      ### Image for Migration:  
       ![image](https://user-images.githubusercontent.com/16536231/62377272-2174fb00-b54b-11e9-81b9-fccb4a2ffb33.png)
 
 8. Create your Tests
     - NOT DONE
+    
+      ### Image for Tests failing due to no functionality
+      ![image](https://user-images.githubusercontent.com/16536231/62411524-d7e4e880-b5fc-11e9-8f91-0ab8bd405c2f.png)
+
 
 9. API Functionality
     - route for both list & create
