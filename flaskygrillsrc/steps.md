@@ -40,8 +40,9 @@
         Indexes:
             "restaurants_pkey" PRIMARY KEY, btree (id)
      ```
-
-        Image for markdown: ![image](https://user-images.githubusercontent.com/16536231/62377272-2174fb00-b54b-11e9-81b9-fccb4a2ffb33.png)
+     
+      ### Image for markdown:  
+      ![image](https://user-images.githubusercontent.com/16536231/62377272-2174fb00-b54b-11e9-81b9-fccb4a2ffb33.png)
 
 8. Create your Tests
     - NOT DONE
