@@ -16,11 +16,11 @@ class Restaurant(db.Model):
         self.name = name
 
     def save(self):
-        db.session.add()
+        db.session.add(self)
         db.commit()
 
     def delete(self):
-        db.session.remove()
+        db.session.remove(self)
         db.commit()
     
     @staticmethod
