@@ -15,8 +15,56 @@ class RestaurantTestCase(TestCase):
             db.create_all()
             
     def test_create_restaurant(self):
+        """The Test API can create a restaurant"""
         response = self.client().post('/restaurants/', data=self.restaurants)
         self.assertEqual(response.status_code, 201)
-        self.assertIn("Bhandini", response.data)
-
+        self.assertIn("Bhandini", str(response.data))
+        
+    def test_get_all_restaurants(self):
+        """The Test API can get all the restaurants"""
+        response = self.client().post('/restaurants/', data=self.restaurants)
+        self.assertEqual(response.status_code, 201)
+        response = self.client().get('/restaurants/', data=self.restaurants)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("Bhandini", str(response.data))
+        
+    def test_get_specific_restaurant_by_id(self):
+        """The Test API can get a restaurant by the id"""
+        response = self.client().post('/restaurants/', data=self.restaurants)
+        self.assertEqual(response.status_code, 201)
+        result = response.data.decode('utf-8').replace("'",""\")
+        result_in_json = json.loads(result)
+        response = self.client().get('/restaurants/{}'.format(result_in_json['id']))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("Bhandini", str(response.data))
+        
+    def test_edit_restaurant(self):
+        """The Test API can edit a restaurant"""
+        response = self.client().post('/restaurants/', data={'name':'Trattoria'})
+        self.assertEqual(response.status_code, 201)
+        response = self.client().put('/restaurants/1', data={'name':'Trattoria Ristorante')          
+        self.assertEqual(response.status_code, 200)
+        response = self.client().get('/restaurants/1')
+        self.assertIn("Ristorante", str(response.data))
     
+    def test_edit_restaurant(self):
+        """The Test API can edit a restaurant"""
+        response = self.client().post('/restaurants/', data={'name':'Trattoria'})
+        self.assertEqual(response.status_code, 201)
+        response = self.client().delete('/restaurants/1')          
+        self.assertEqual(response.status_code, 200)
+        response = self.client().get('/restaurants/1')
+        self.assertEqual(response.status_code, 404)
+                                                             
+    def tearDown(self):
+        """teardown all the initialized variables."""
+        with self.app.app_context():
+            # drop all the created test tables
+            db.session.remove()
+            db.drop_all()
+           
+                                                             
+# Execute the tests
+if __name__ == "__main__":
+    unittest.main()
+        
