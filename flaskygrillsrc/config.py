@@ -14,6 +14,7 @@ class TestingConfig(Config):
 	"""Configurations for Testing Environment, with a separate database"""
 	DEBUG = True
 	TESTING = True
+	SQL_DATABASE_URI = os.environ.get("DATABASE_TESTING")
 
 
 class StagingConfig(Config):
