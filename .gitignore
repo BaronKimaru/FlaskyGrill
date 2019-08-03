@@ -1,4 +1,7 @@
-/venv/
+
+
+venv/
 flaskygrillsrc//migrations/
 flaskygrillsrc/__pycache__/
 flaskygrillsrc//instance/
+
