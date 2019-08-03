@@ -4,7 +4,7 @@ from flask import jsonify, request
 import json
 
 
-@restaurants_blueprint('/restaurants/', methods = ['GET', 'POST'])
+# @restaurants_blueprint('/restaurants/', methods = ['GET', 'POST'])
 # @app.route('/restaurants/', methods=['GET','POST'])
 def list_create_restaurants():
     """Either gets all the restaurants or receives & saves restaurant"""

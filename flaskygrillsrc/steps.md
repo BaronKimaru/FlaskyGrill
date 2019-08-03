@@ -55,6 +55,10 @@
     - route for both list & create
     - NOT DONE
 
+    Image: Tests working for list & create
+    ![image](https://user-images.githubusercontent.com/16536231/62412736-39ae4e00-b60f-11e9-8f54-2bbc4d11d0f9.png)
+
+
 10. API Manipulation
     - route for GET, POST & DELETE requests. restaurant = Restaurant.query.filter(id=id)
     - NOT DONE
