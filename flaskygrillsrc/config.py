@@ -5,6 +5,8 @@ class Config:
 	DEBUG = False
 	CSRF_ENABLED = True
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
+	SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:postgres@localhost/flaskapi'
+
 
 
 class DevelopmentConfig(Config):

@@ -16,47 +16,48 @@ class RestaurantTestCase(unittest.TestCase):
             db.create_all()
             
     def test_create_restaurant(self):
-        """The Test API can create a restaurant"""
+        """The Test API can Create a restaurant"""
         response = self.client().post('/restaurants/', data=self.restaurant)
+        print("response:", response)
         self.assertEqual(response.status_code, 201)
         self.assertIn("Bhandini", str(response.data))
         
     def test_get_all_restaurants(self):
-        """The Test API can get all the restaurants"""
+        """The Test API can Get all the restaurants"""
         response = self.client().post('/restaurants/', data=self.restaurant)
         self.assertEqual(response.status_code, 201)
         response = self.client().get('/restaurants/', data=self.restaurant)
         self.assertEqual(response.status_code, 200)
         self.assertIn("Bhandini", str(response.data))
         
-    def test_get_specific_restaurant_by_id(self):
-        """The Test API can get a restaurant by the id"""
-        response = self.client().post('/restaurants/', data=self.restaurant)
-        self.assertEqual(response.status_code, 201)
-        result = response.data.decode('utf-8')
-        print(f"Result seems to be: {result}")
-        result_in_json = json.loads(result)
-        response = self.client().get('/restaurants/{}'.format(result_in_json['id']))
-        self.assertEqual(response.status_code, 200)
-        self.assertIn("Bhandini", str(response.data))
+    # def test_get_specific_restaurant_by_id(self):
+    #     """The Test API can Get a restaurant by the id"""
+    #     response = self.client().post('/restaurants/', data=self.restaurant)
+    #     self.assertEqual(response.status_code, 201)
+    #     result = response.data.decode('utf-8')
+    #     print(f"Result seems to be: {result}")
+    #     result_in_json = json.loads(result)
+    #     response = self.client().get('/restaurants/{}'.format(result_in_json['id']))
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertIn("Bhandini", str(response.data))
         
-    def test_edit_restaurant(self):
-        """The Test API can edit a restaurant"""
-        response = self.client().post('/restaurants/', data={'name':'Trattoria'})
-        self.assertEqual(response.status_code, 201)
-        response = self.client().put('/restaurants/1', data={'name':'Trattoria Ristorante'})          
-        self.assertEqual(response.status_code, 200)
-        response = self.client().get('/restaurants/1')
-        self.assertIn("Ristorante", str(response.data))
+    # def test_edit_restaurant(self):
+    #     """The Test API can Edit a restaurant"""
+    #     response = self.client().post('/restaurants/', data={'name':'Trattoria'})
+    #     self.assertEqual(response.status_code, 201)
+    #     response = self.client().put('/restaurants/1', data={'name':'Trattoria Ristorante'})          
+    #     self.assertEqual(response.status_code, 200)
+    #     response = self.client().get('/restaurants/1')
+    #     self.assertIn("Ristorante", str(response.data))
     
-    def test_edit_restaurant(self):
-        """The Test API can edit a restaurant"""
-        response = self.client().post('/restaurants/', data={'name':'Trattoria'})
-        self.assertEqual(response.status_code, 201)
-        response = self.client().delete('/restaurants/1')          
-        self.assertEqual(response.status_code, 200)
-        response = self.client().get('/restaurants/1')
-        self.assertEqual(response.status_code, 404)
+    # def test_delete_restaurant(self):
+    #     """The Test API can Delete a restaurant"""
+    #     response = self.client().post('/restaurants/', data={'name':'Trattoria'})
+    #     self.assertEqual(response.status_code, 201)
+    #     response = self.client().delete('/restaurants/1')          
+    #     self.assertEqual(response.status_code, 200)
+    #     response = self.client().get('/restaurants/1')
+    #     self.assertEqual(response.status_code, 404)
                                                              
     def tearDown(self):
         """teardown all the initialized variables."""

@@ -1,3 +1,5 @@
+
+
 from app import db
 
 
@@ -17,17 +19,17 @@ class Restaurant(db.Model):
 
     def save(self):
         db.session.add(self)
-        db.commit()
+        db.session.commit()
 
     def delete(self):
         db.session.remove(self)
-        db.commit()
-    
+        db.session.commit()
+
     @staticmethod
     def get_all(self):
         return Restaurant.query.all()
 
     def __repr__(self):
-        return "restaurant name: %s",self.name
+        return "restaurant name: {}".format(self.name)
     
 
