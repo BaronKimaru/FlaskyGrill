@@ -1,3 +1,5 @@
+import os
+
 class Config:
 	"""Common Configurations"""
 	DEBUG = False
@@ -14,7 +16,7 @@ class TestingConfig(Config):
 	"""Configurations for Testing Environment, with a separate database"""
 	DEBUG = True
 	TESTING = True
-	SQL_DATABASE_URI = os.environ.get("DATABASE_TESTING")
+	SQL_DATABASE_URI = os.environ.get("DB_TEST_SQLALCHEMY")
 
 
 class StagingConfig(Config):

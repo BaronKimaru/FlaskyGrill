@@ -1,7 +1,8 @@
-from unittest import TestCase
-from app import models
+import unittest
+from app import create_app, db
+import os
 
-class RestaurantTestCase(TestCase):
+class RestaurantTestCase(unittest.TestCase):
     """This class represents the restaurants test case"""
     
     def setUp(self):
@@ -16,23 +17,24 @@ class RestaurantTestCase(TestCase):
             
     def test_create_restaurant(self):
         """The Test API can create a restaurant"""
-        response = self.client().post('/restaurants/', data=self.restaurants)
+        response = self.client().post('/restaurants/', data=self.restaurant)
         self.assertEqual(response.status_code, 201)
         self.assertIn("Bhandini", str(response.data))
         
     def test_get_all_restaurants(self):
         """The Test API can get all the restaurants"""
-        response = self.client().post('/restaurants/', data=self.restaurants)
+        response = self.client().post('/restaurants/', data=self.restaurant)
         self.assertEqual(response.status_code, 201)
-        response = self.client().get('/restaurants/', data=self.restaurants)
+        response = self.client().get('/restaurants/', data=self.restaurant)
         self.assertEqual(response.status_code, 200)
         self.assertIn("Bhandini", str(response.data))
         
     def test_get_specific_restaurant_by_id(self):
         """The Test API can get a restaurant by the id"""
-        response = self.client().post('/restaurants/', data=self.restaurants)
+        response = self.client().post('/restaurants/', data=self.restaurant)
         self.assertEqual(response.status_code, 201)
-        result = response.data.decode('utf-8').replace("'",""\")
+        result = response.data.decode('utf-8')
+        print(f"Result seems to be: {result}")
         result_in_json = json.loads(result)
         response = self.client().get('/restaurants/{}'.format(result_in_json['id']))
         self.assertEqual(response.status_code, 200)
@@ -42,7 +44,7 @@ class RestaurantTestCase(TestCase):
         """The Test API can edit a restaurant"""
         response = self.client().post('/restaurants/', data={'name':'Trattoria'})
         self.assertEqual(response.status_code, 201)
-        response = self.client().put('/restaurants/1', data={'name':'Trattoria Ristorante')          
+        response = self.client().put('/restaurants/1', data={'name':'Trattoria Ristorante'})          
         self.assertEqual(response.status_code, 200)
         response = self.client().get('/restaurants/1')
         self.assertIn("Ristorante", str(response.data))
