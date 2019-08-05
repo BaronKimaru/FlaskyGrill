@@ -76,3 +76,23 @@ git rm --cache /path/to/file eg git rm -r --cached **"C:\baronprojects\pythonpro
 git commit -am "Remove file"  
 git push -u origin master  
 (This works even if the file was added to the remote repo some commits ago) Remember to add to .gitignore the file extensions that you don't want to push.  
+
+How to Add a New Remote to your Git Repo
+Shabbir avatar
+Written by Shabbir 
+Updated over a week ago
+To add a new remote, use the git remote add command on the terminal, in the directory your repository is stored at.
+
+The git remote add command takes two arguments:
+
+A remote name, for example, “origin”
+A remote URL, which you can find on the Source sub-tab of your Git repo
+
+For example:
+
+git remote add origin git@git.assembla.com:portfolio/space.space_name.git
+#set a new remote
+git remote -v
+#Verify new remote
+origin  git@git.assembla.com:portfolio/space.space_name.git (fetch)
+origin  git@git.assembla.com:portfolio/space.space_name.git (push)
