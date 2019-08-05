@@ -3,5 +3,5 @@
 venv/
 flaskygrillsrc/migrations/
 flaskygrillsrc/__pycache__/
-flaskygrillsrc//instance/
+flaskygrillsrc/instance/
 

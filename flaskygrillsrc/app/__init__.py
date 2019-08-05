@@ -1,5 +1,4 @@
 from flask_api import FlaskAPI
-from flask import request, jsonify, abort
 from flask_sqlalchemy import SQLAlchemy
 
 #local imports

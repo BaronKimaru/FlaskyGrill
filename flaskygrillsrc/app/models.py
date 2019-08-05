@@ -30,6 +30,6 @@ class Restaurant(db.Model):
         return Restaurant.query.all()
 
     def __repr__(self):
-        return "restaurant name: {}".format(self.name)
+        return "The Restaurant's Name is: {}".format(self.name)
     
 
