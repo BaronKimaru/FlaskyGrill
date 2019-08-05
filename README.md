@@ -66,8 +66,8 @@ A Flask App that takes full advantage of all the features Flask &amp; FLaskAPI h
 
 
 10. API Manipulation
-    - route for GET, POST & DELETE requests. restaurant = Restaurant.query.filter(id=id)
-    - NOT DONE
+    - route for GET, POST & DELETE requests. restaurant = Restaurant.query.filter_by(id=id) OR query.get(id)
+    - DONE
 
 ## git remove committed files
 If you want to remove the file from the remote repo, first remove it from your project with --cache option and then push it:
