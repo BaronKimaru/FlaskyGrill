@@ -66,7 +66,9 @@ def manipulate_restaurant(id):
     response = None
     restaurant_obj = None
     try:
-        restaurant_obj = Restaurant.query.filter_by(id=id).first()
+        # restaurant_obj = Restaurant.query.filter_by(id=id).first()
+        restaurant_obj = Restaurant.query.get(id)
+
         print(f"Restaurant Instance: {restaurant_obj}")
 
         if not restaurant_obj:
@@ -94,13 +96,16 @@ def manipulate_restaurant(id):
                 response = jsonify(obj)         # Always use jsonify(result). never use json.dumps(generates datetime serializable error)
                 response.status_code = 200      # Always use status_code after loading response
 
-        elif request.method == "DELETE":
+        # in python3, DELETE has an issue in removing stuff, hence why I used it different below.
+        elif request.method == b"DELETE":
             print("DELETE data coming through")
             
             restaurant_obj.delete()
-            return {"message": "restaurant {} deleted successfully".format(restaurant_obj.id) 
-         }, 200
-            
+            obj = {
+                        "message": "restaurant {} deleted successfully".format(restaurant_obj.id)
+                        }
+            response = jsonify(obj)
+            response.status_code = 204
         
         else:
             print("GET data coming through")
