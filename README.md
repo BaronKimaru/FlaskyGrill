@@ -95,16 +95,17 @@ git remote -v
 origin  git@git.assembla.com:portfolio/space.space_name.git (fetch) ie, git fetch --all
 origin  git@git.assembla.com:portfolio/space.space_name.git (push)  git push 
 ```
-FULL TUTORIAL:
-When collaborating with colleagues, or even when you're just using an open source library, you'll often need to fetch a branch from a remote repository using Git.
+## FULL TUTORIAL:
+* When collaborating with colleagues, or even when you're just using an open source library, you'll often need to fetch a branch from a remote repository using Git.
 
-The "base case" to fetch a branch is fairly simple, but like with many other Git operations, it can become quite confusing when other constraints are introduced and you need to start using one of the many options available. In this article I'll try and shed some light on the commands that need to be run and options that are commonly used.
+* The "base case" to fetch a branch is fairly simple, but like with many other Git operations, it can become quite confusing when other constraints are introduced and you need to start using one of the many options available. In this article I'll try and shed some light on the commands that need to be run and options that are commonly used.
 
-Generally, you'll want to run this sequence:
-
+* Generally, you'll want to run this sequence:
+```
 $ git fetch <remote-repo> <remote-branch>:<local-branch>
 $ git checkout <local-branch>
-The fetch command will retrieve the remote branch you're interested in and all related objects and references, storing it in a new local branch that you specified by the argument <local-branch>.
+```
+* The fetch command will retrieve the remote branch you're interested in and all related objects and references, storing it in a new local branch that you specified by the argument <local-branch>.
 
 Once everything has been downloaded from the remote repo you can then check it out to actually inspect and play around with the code.
 
@@ -112,21 +113,31 @@ If you only have one remote repo then you can omit all of the arguments to git f
 
 Given how fetch works, the example command above will retrieve all of the code in the branch you're interested in but it won't affect any of your local branches since nothing is merged with fetch.
 
-Often times you'll want your new local branch to track the remote one, which is helpful for easily pulling and pushing changes. To do this, you should use the --track option with the checkout command, which simultaneously checks out the branch and tracks it with the remote branch. Here is what that would look like:
-
+* Often times you'll want your new local branch to track the remote one, which is helpful for easily pulling and pushing changes. To do this, you should use the --track option with the checkout command, which simultaneously checks out the branch and tracks it with the remote branch. * Here is what that would look like:
+```
 $ git checkout --track <remote-repo>/<remote-branch>
-This will create a local branch of the same name as the remote one.
+```
+__This will create a local branch of the same name as the remote one.__
 
-If you want to checkout the remote branch to a local one, but with a different name, then you need to include the -b option to create the new local branch:
-
+* If you want to checkout the remote branch to a local one, but with a different name, then you need to include the -b option to create the new local branch:
+```
 $ git checkout --track -b <local-branch> <remote-repo>/<remote-branch>
-In practice, it'll look something like this:
-
+```
+* In practice, it'll look something like this:
+```
 $ git checkout --track -b fix-144 origin/bug-144
 Branch fix-144 set up to track remote branch bug-144 from origin.
 Switched to a new branch 'fix-144'
-To verify your new branch is tracking the remote branch, run the branch command with the -vv option:
-
+```
+* To verify your new branch is tracking the remote branch, run the branch command with the -vv option:
+```
 $ git branch -vv
 * fix-144 0774548 [origin/bug-144] Fix #144
   master  dc538f6 [origin/master] 4.16.4
+```
+
+## Summary
+1. git remote add origin git@git.assembla.com:portfolio/space.space_name.git
+2. git remote -v   **to verify**
+3. git fetch remote origin/master **OR** git fetch 
+4. git checkout origin/master
