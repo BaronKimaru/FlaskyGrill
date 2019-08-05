@@ -48,7 +48,7 @@ A Flask App that takes full advantage of all the features Flask &amp; FLaskAPI h
     ![image](https://user-images.githubusercontent.com/16536231/62377272-2174fb00-b54b-11e9-81b9-fccb4a2ffb33.png)
 
 8. Create your Tests
-    - NOT DONE
+    - DONE
     
     ### Image for Tests failing due to no functionality
     ![image](https://user-images.githubusercontent.com/16536231/62411524-d7e4e880-b5fc-11e9-8f91-0ab8bd405c2f.png)
@@ -56,7 +56,7 @@ A Flask App that takes full advantage of all the features Flask &amp; FLaskAPI h
 
 9. API Functionality
     - route for both list & create
-    - NOT DONE
+    - DONE
 
     Image: Tests working for list & create
     ![image](https://user-images.githubusercontent.com/16536231/62412736-39ae4e00-b60f-11e9-8f54-2bbc4d11d0f9.png)
