@@ -60,13 +60,10 @@ class RestaurantTestCase(unittest.TestCase):
         # in python3, DELETE & PATCH(i used PUT) method doesnt seem to work, 
         # Instead, both actually fall back to the default GET request.
         del_response = self.client().delete('/restaurants/1', headers={'Content-Type': 'application/x-www-form-urlencoded'})
-        print(f"delete rep: {del_response}")               
+        print(f"delete resp: {del_response}")       # shows 200 instead of 204 cause no deletion occurs
         print(f"DELETE del_response looks like: {del_response.data}")
 
-        try:
-            self.assertEqual(del_response.status_code, 204)
-        except:
-            pass
+        self.assertEqual(del_response.status_code, 204)
         
         # We should test to see if it return somethin', should return a 404
         get_response = self.client().get('/restaurants/1')
@@ -75,6 +72,7 @@ class RestaurantTestCase(unittest.TestCase):
             self.assertEqual(get_response.status_code, 404)
         except Exception as e:
             print(f"Error as : {e}")
+
                                                              
     def tearDown(self):
         """teardown all the initialized variables."""
